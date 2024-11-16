@@ -26,5 +26,3 @@ contract SimpleStorage {
         nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 }
-
-// SPDX-License-Identifier: MIT
