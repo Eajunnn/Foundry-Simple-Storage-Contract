@@ -11,15 +11,15 @@ async function syncData(payload) {
     const ethereumRes = await transactEthereum(payload.value);
     console.log("Data stored on Ethereum:", ethereumRes);
   } catch (error) {
-    console.error("Error in syncData:", error);
+    console.error("Error in syncData:", error.message);
   }
 }
 
-// If running as a standalone script (e.g., via `node sync.js "someData"`)
+// If running as a standalone script (e.g., via node sync.js "someData")
 if (require.main === module) {
-  const data = process.argv[2];  // Get data from command-line argument
+  const data = process.argv[2]; // Get data from command-line argument
   syncData({ value: data }).catch((err) => {
-    console.error("Error syncing data:", err);
+    console.error("Error syncing data:", err.message);
   });
 }
 

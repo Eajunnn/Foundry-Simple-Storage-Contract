@@ -1,0 +1,15 @@
+apiServer:
+  host: "0.0.0.0" # Change to a specific host if needed
+  port: 3000
+  plugins:
+    - packageName: "@hyperledger/cactus-plugin-ledger-connector-ethereum"
+      options:
+        rpcApiHttpHost: "https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID"
+        instanceId: "ethereum-connector"
+    - packageName: "@hyperledger/cactus-plugin-ledger-connector-fabric"
+      options:
+        connectionProfile: "./fabric-network/connection-org1.json"
+        fabricWalletDir: "./wallet"
+        identity: "admin"
+        channelName: "mychannel"
+        chaincodeId: "mychaincode"

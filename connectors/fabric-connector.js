@@ -1,29 +1,22 @@
-const { PluginLedgerConnectorFabric } = require("@hyperledger/cactus-plugin-ledger-connector-fabric");
-const { RunTransactionRequest } = require("@hyperledger/cactus-core-api");
+const axios = require("axios");
 
-const pluginFabric = new PluginLedgerConnectorFabric({
-  connectionProfile: require("../fabric-network/connection-org1.json"),
-  instanceId: "fabric-connector",
-  logLevel: "INFO",
-  fabricWalletDir: "./wallet", // Path to your Fabric wallet
-  discoveryOptions: { enabled: true, asLocalhost: true },
-});
+const API_SERVER_URL = "http://localhost:3000/api/v1/plugins/@hyperledger/cactus-plugin-ledger-connector-fabric";
 
 async function transactFabric(data) {
   try {
     const req = {
       channelName: "mychannel",
       chaincodeId: "mychaincode",
-      fcn: "storeData",
+      fcn: "storeData", // Fabric chaincode function
       args: [data],
     };
 
-    const res = await pluginFabric.transact(req);
-    console.log("Fabric transaction result:", res);
-    return res;
-  } catch (ex) {
-    console.error("Error interacting with Fabric:", ex);
-    throw ex;
+    const res = await axios.post(`${API_SERVER_URL}/runTransaction`, req);
+    console.log("Fabric transaction result:", res.data);
+    return res.data;
+  } catch (error) {
+    console.error("Error interacting with Fabric via API:", error.message);
+    throw error;
   }
 }
 
