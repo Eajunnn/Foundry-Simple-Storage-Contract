@@ -1,38 +1,37 @@
 {
-    "name": "fabric-network",
-    "version": "1.0.0",
-    "client": {
-      "organization": "Org1"
-    },
-    "channels": {
-      "mychannel": {
-        "orderers": [
-          {
-            "url": "grpc://localhost:7050"
-          }
-        ],
-        "peer": {
-          "url": "grpc://localhost:7051"
-        }
+  "name": "fabric-network",
+  "version": "1.0.0",
+  "client": {
+    "organization": "Org1"
+  },
+  "channels": {
+    "mychannel": {
+      "orderers": ["orderer.example.com"],
+      "peers": {
+        "peer0.org1.example.com": {}
       }
-    },
-    "organizations": {
-      "Org1": {
-        "mspid": "Org1MSP",
-        "peers": [
-          "peer0.org1.example.com"
-        ]
+    }
+  },
+  "organizations": {
+    "Org1": {
+      "mspid": "Org1MSP",
+      "peers": ["peer0.org1.example.com"]
+    }
+  },
+  "orderers": {
+    "orderer.example.com": {
+      "url": "grpcs://localhost:7050",
+      "tlsCACerts": {
+        "path": "/root/Blockchain/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/msp/tlscacerts/ca.crt"
       }
-    },
-    "orderers": [
-      {
-        "url": "grpc://localhost:7050"
-      }
-    ],
-    "peers": {
-      "peer0.org1.example.com": {
-        "url": "grpc://localhost:7051"
+    }
+  },
+  "peers": {
+    "peer0.org1.example.com": {
+      "url": "grpcs://localhost:7051",
+      "tlsCACerts": {
+        "path": "/root/Blockchain/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/msp/tlscacerts/ca.crt"
       }
     }
   }
-  
+}

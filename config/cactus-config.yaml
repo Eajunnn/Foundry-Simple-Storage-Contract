@@ -8,8 +8,8 @@ apiServer:
         instanceId: "ethereum-connector"
     - packageName: "@hyperledger/cactus-plugin-ledger-connector-fabric"
       options:
-        connectionProfile: "./fabric-network/connection-org1.json"
-        fabricWalletDir: "./wallet"
+        connectionProfile: "/root/Blockchain/foundry-23/foundry-simple-storage-23/fabric/fabric-network/connection-org1.json"
+        fabricWalletDir: "/root/Blockchain/foundry-23/foundry-simple-storage-23/fabric/wallet"
         identity: "admin"
         channelName: "mychannel"
-        chaincodeId: "mychaincode"
+        chaincodeId: "c6dc790944117516873392a7cf7103088d253aea4ff65c0f56099cce1aa097d6"

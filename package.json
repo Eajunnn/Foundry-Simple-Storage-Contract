@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@hyperledger/cactus-plugin-ledger-connector-ethereum": "^2.0.0",
+    "@hyperledger/cactus-plugin-ledger-connector-fabric": "^2.0.0",
     "axios": "^1.0.0"
   },
   "scripts": {
